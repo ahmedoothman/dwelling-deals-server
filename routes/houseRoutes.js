@@ -5,10 +5,9 @@ const houseController = require('../controllers/houseController');
 
 const router = express.Router();
 
-router.use(authController.protect);
-
 router.route('/').get(houseController.getAllHouses);
 router.route('/:id').get(houseController.getHouse);
+router.use(authController.protect);
 
 router.use(authController.restrictTo('realtor', 'admin'));
 router
