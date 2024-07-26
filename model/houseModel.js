@@ -9,6 +9,8 @@ const houseSchema = new mongoose.Schema(
         type: { type: String, enum: ['rent', 'sale'], required: true },
         realtor: { type: Schema.Types.ObjectId, ref: 'User', required: true },
         imageUrl: { type: String },
+        images: [{ type: String }],
+        rate: { type: Number, min: 0, max: 5 },
         address: {
             street: { type: String, required: true },
             city: { type: String, required: true },

@@ -4,6 +4,7 @@ const morgan = require('morgan'); // 3rd party middleware
 ////////////////////////////////////////////////////////
 const userRouter = require('./routes/userRoutes');
 const houseRouter = require('./routes/houseRoutes');
+const wishlistRouter = require('./routes/wishlistRoutes');
 const errorController = require('./controllers/errorController');
 
 //secuirty
@@ -42,6 +43,7 @@ app.use(
 app.use('/api/img', express.static(`${__dirname}/img`));
 app.use('/api/users', userRouter);
 app.use('/api/houses', houseRouter);
+app.use('/api/wishlists', wishlistRouter);
 //unhandeled routes gets response with this , must be put at the end of the file after all routes
 app.all('*', (req, res, next) => {
     // res.status(404).json({

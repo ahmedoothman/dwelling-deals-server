@@ -2,7 +2,7 @@ const express = require('express');
 
 const authController = require('../controllers/authController');
 const houseController = require('../controllers/houseController');
-
+const multerConfig = require('../utils/multerConfig');
 const router = express.Router();
 
 router.route('/').get(houseController.getAllHouses);
@@ -13,9 +13,19 @@ router.use(authController.restrictTo('realtor', 'admin'));
 router
     .route('/myhouses/realtor')
     .get(houseController.getMyHouses)
-    .post(houseController.addToMyHouse);
+    .post(
+        multerConfig.uploadHouseImages,
+        multerConfig.resizeAndUploadImages,
+        houseController.addToMyHouse
+    );
 
-router.route('/myhouses/:id').patch(houseController.updateMyHouse);
+router
+    .route('/myhouses/:id')
+    .patch(
+        multerConfig.uploadHouseImages,
+        multerConfig.resizeAndUploadImages,
+        houseController.updateMyHouse
+    );
 router.route('/myhouses/:id').delete(houseController.deleteMyHouse);
 
 router.use((req, res, next) => {

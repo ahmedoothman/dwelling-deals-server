@@ -1,6 +1,8 @@
 const House = require('../model/houseModel');
 const factory = require('./handlerFactory');
 const AppError = require('../utils/appError');
+const catchAsync = require('../utils/catchAsync');
+
 exports.getAllHouses = factory.getAll(House);
 exports.getHouse = factory.getOne(House);
 
@@ -10,7 +12,7 @@ exports.deleteHouse = factory.deleteOne(House);
 
 exports.createHouse = factory.createOne(House);
 
-exports.addToMyHouse = async (req, res, next) => {
+exports.addToMyHouse = catchAsync(async (req, res, next) => {
     req.body.realtor = req.user.id;
     const house = await House.create(req.body);
 
@@ -20,8 +22,8 @@ exports.addToMyHouse = async (req, res, next) => {
             data: house,
         },
     });
-};
-exports.getMyHouses = async (req, res, next) => {
+});
+exports.getMyHouses = catchAsync(async (req, res, next) => {
     const houses = await House.find({ realtor: req.user.id });
 
     res.status(200).json({
@@ -31,8 +33,8 @@ exports.getMyHouses = async (req, res, next) => {
             data: houses,
         },
     });
-};
-exports.updateMyHouse = async (req, res, next) => {
+});
+exports.updateMyHouse = catchAsync(async (req, res, next) => {
     // search for the house by id and the realtor
     const house = await House.findOneAndUpdate(
         { _id: req.params.id, realtor: req.user.id },
@@ -52,9 +54,9 @@ exports.updateMyHouse = async (req, res, next) => {
             data: house,
         },
     });
-};
+});
 
-exports.deleteMyHouse = async (req, res, next) => {
+exports.deleteMyHouse = catchAsync(async (req, res, next) => {
     const house = await House.findOneAndDelete({
         _id: req.params.id,
         realtor: req.user.id,
@@ -68,9 +70,9 @@ exports.deleteMyHouse = async (req, res, next) => {
         status: 'success',
         data: null,
     });
-};
+});
 
-exports.approveHouse = async (req, res, next) => {
+exports.approveHouse = catchAsync(async (req, res, next) => {
     const house = await House.findByIdAndUpdate(req.params.id, {
         approved: true,
     });
@@ -85,4 +87,4 @@ exports.approveHouse = async (req, res, next) => {
             data: house,
         },
     });
-};
+});

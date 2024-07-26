@@ -36,7 +36,7 @@ async function generateRandomData() {
     const houseTypes = ['rent', 'sale'];
     const houses = [];
     //read all realtors from the users array
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 30; i++) {
         const realtors = users.filter((user) => user.role === 'realtor');
         const house = new House({
             title: faker.lorem.words(),
@@ -45,7 +45,12 @@ async function generateRandomData() {
             type: houseTypes[Math.floor(Math.random() * houseTypes.length)],
             realtor: realtors[Math.floor(Math.random() * realtors.length)]._id,
             imageUrl: faker.image.imageUrl(600, 500, 'realtor'),
-
+            images: [
+                faker.image.imageUrl(600, 500, 'realtor'),
+                faker.image.imageUrl(600, 500, 'realtor'),
+                faker.image.imageUrl(600, 500, 'realtor'),
+            ],
+            rate: Math.floor(Math.random() * 6),
             address: {
                 street: faker.location.streetAddress(),
                 city: faker.location.city(),
