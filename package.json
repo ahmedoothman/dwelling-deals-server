@@ -13,6 +13,7 @@
     "email": "ahmed.othman.ghazzawi@gmail.com",
     "license": "ISC",
     "dependencies": {
+        "@fontsource/roboto": "^5.0.13",
         "axios": "^1.7.2",
         "bcryptjs": "^2.4.3",
         "cookie-parser": "^1.4.6",
