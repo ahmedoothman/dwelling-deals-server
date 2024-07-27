@@ -29,9 +29,7 @@ exports.getMyHouses = catchAsync(async (req, res, next) => {
     res.status(200).json({
         status: 'success',
         results: houses.length,
-        data: {
-            data: houses,
-        },
+        data: houses,
     });
 });
 exports.updateMyHouse = catchAsync(async (req, res, next) => {
@@ -50,9 +48,7 @@ exports.updateMyHouse = catchAsync(async (req, res, next) => {
 
     res.status(200).json({
         status: 'success',
-        data: {
-            data: house,
-        },
+        data: house,
     });
 });
 
