@@ -11,6 +11,9 @@ const houseSchema = new mongoose.Schema(
         imageUrl: { type: String },
         images: [{ type: String }],
         rate: { type: Number, min: 0, max: 5 },
+        bedrooms: { type: Number, required: true },
+        bathrooms: { type: Number, required: true },
+        area: { type: Number, required: true },
         address: {
             street: { type: String, required: true },
             city: { type: String, required: true },

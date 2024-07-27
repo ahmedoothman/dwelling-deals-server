@@ -51,6 +51,9 @@ async function generateRandomData() {
                 faker.image.imageUrl(600, 500, 'realtor'),
             ],
             rate: Math.floor(Math.random() * 6),
+            bedrooms: Math.floor(Math.random() * 6),
+            bathrooms: Math.floor(Math.random() * 6),
+            area: Math.floor(Math.random() * 500),
             address: {
                 street: faker.location.streetAddress(),
                 city: faker.location.city(),
