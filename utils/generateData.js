@@ -36,7 +36,7 @@ async function generateRandomData() {
     const houseTypes = ['rent', 'sale'];
     const houses = [];
     //read all realtors from the users array
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 100; i++) {
         const realtors = users.filter((user) => user.role === 'realtor');
         const house = new House({
             title: faker.lorem.words(),
