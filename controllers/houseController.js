@@ -18,9 +18,7 @@ exports.addToMyHouse = catchAsync(async (req, res, next) => {
 
     res.status(201).json({
         status: 'success',
-        data: {
-            data: house,
-        },
+        data: house,
     });
 });
 exports.getMyHouses = catchAsync(async (req, res, next) => {

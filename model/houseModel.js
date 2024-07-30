@@ -30,5 +30,13 @@ houseSchema.pre(/^find/, function (next) {
     });
     next();
 });
+// populate after create
+houseSchema.post('save', function (doc, next) {
+    doc.populate({
+        path: 'realtor',
+        select: 'name email phoneNumber', // Select fields to populate
+    });
+    next();
+});
 
 module.exports = mongoose.model('House', houseSchema);

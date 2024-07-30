@@ -42,7 +42,6 @@ exports.removeFromMyWishlist = catchAsync(async (req, res, next) => {
     if (!wishlist) {
         return next(new AppError('No wishlist found with that ID', 404));
     }
-    console.log(req.params.houseId);
     wishlist.houses = wishlist.houses.filter((house) => {
         return house._id.toString() !== req.params.houseId;
     });

@@ -9,7 +9,6 @@ const wishlistSchema = new Schema({
 wishlistSchema.pre(/^find/, function (next) {
     this.populate({
         path: 'houses',
-        select: 'title description price type rate address',
     });
     next();
 });
