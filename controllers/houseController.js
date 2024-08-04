@@ -22,7 +22,7 @@ exports.addToMyHouse = catchAsync(async (req, res, next) => {
     });
 });
 exports.getMyHouses = catchAsync(async (req, res, next) => {
-    const houses = await House.find({ realtor: req.user.id });
+    const houses = await House.find({ realtor: req.user._id });
 
     res.status(200).json({
         status: 'success',
