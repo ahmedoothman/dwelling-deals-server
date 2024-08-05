@@ -1,15 +1,19 @@
 const mongoose = require('mongoose');
 // import { faker } from '@faker-js/faker';
+
 const { faker } = require('@faker-js/faker');
 const User = require('../model/userModel');
 const House = require('../model/houseModel');
-mongoose.connect(
-    'mongodb+srv://ahmedoothman:dataconnect@myprojects.iryt0op.mongodb.net/DwellingDeals?retryWrites=true&w=majority',
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    }
-);
+
+const dotenv = require('dotenv');
+dotenv.config({ path: '.././config.env' }); // configuration of the environment file
+const password = process.env.DATABASE_PASSWORD;
+const dbURI = process.env.DATABASE.replace('<PASSWORD>', password);
+
+mongoose.connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
 // Generate random data
 async function generateRandomData() {
@@ -97,7 +101,7 @@ async function generateRandomData() {
     mongoose.disconnect();
 }
 
-generateRandomData().catch((err) => {
-    console.error(err);
-    mongoose.disconnect();
-});
+// generateRandomData().catch((err) => {
+//     console.error(err);
+//     mongoose.disconnect();
+// });
