@@ -30,7 +30,7 @@ mongoose
 const port = process.env.PORT;
 const server = app.listen(port, () => {
     console.log(`works on ${port} ...`);
-    preventSleep.preventSleep();
+    // preventSleep.preventSleep();
 });
 
 process.on('unhandeledRejection', (err) => {
