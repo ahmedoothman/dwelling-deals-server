@@ -48,7 +48,7 @@ Check out the UI/UX design of Dwelling Deals on Behance:
 #### 💻 Web App (Vite)
 
 1. Clone the repository:  
-   `git clone https://github.com/ahmedoothman/dwelling-deals-web-app`
+   `git clone https://github.com/ahmedoothman/dwelling-deals`
 2. Install dependencies:  
    `npm install`
 3. Start the development server:  
@@ -57,7 +57,7 @@ Check out the UI/UX design of Dwelling Deals on Behance:
 #### ⚙️ Backend
 
 1. Clone the repository:  
-   `git clone https://github.com/ahmedoothman/dwelling-deals-backend`
+   `git clone https://github.com/ahmedoothman/dwelling-deals-server`
 2. Install dependencies:  
    `npm install`
 3. Configure the `.env` file for MongoDB and environment variables.
